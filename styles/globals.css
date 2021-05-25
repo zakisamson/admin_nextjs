@@ -13,3 +13,13 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.sign-ctn {
+  border: 1px solid #d3d3d3;
+  box-shadow: 0px 43px 350px rgba(0, 0, 0, 0.06),
+    0px 12.9632px 105.515px rgba(0, 0, 0, 0.0452747),
+    0px 5.38427px 43.8254px rgba(0, 0, 0, 0.0419759),
+    0px 1.94738px 15.8508px rgba(0, 0, 0, 0.0376014);
+  border-radius: 20px;
+}
+

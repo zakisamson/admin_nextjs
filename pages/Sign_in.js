@@ -1,19 +1,48 @@
-import { Container, Row, Col, Image } from 'react-bootstrap'
-import loginImage from '../public/Login.png'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react'
+import { Container, Row, Col, Image, Form, Button } from 'react-bootstrap'
 
 export default function Sign_in(){
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleUsername = e =>{
+        setUsername(e.target.value);
+    };
+    
+    const handlePassword = e =>{
+        setPassword(e.target.value);
+    };
+
     return (
-        <div style={{marginTop:'60px'}}>
-            <Container>
+        <Container fluid style={{marginTop:'60px'}}>
+            <Container className="sign-ctn" style={{padding:'40px'}}>
                 <Row>
-                    <Col>
-                        <Image src={loginImage} />
+                    <Col style={{textAlign:'center'}} sm={12} lg={7}>
+                        <Image src="/Login.png" fluid/>
+                        <h3 style={{marginTop:'20px',  fontWeight:'700'}}>Start your new journey with us</h3>
+                        <p style={{color:'#9D9D9D'}}>Build your own shop using peduli digital marketplace, you can sell all your favourite item and get easy money</p>
                     </Col>
-                    <Col>
-                        asdfasdfsdddddddddddddddddddddddddd
+                    <Col sm={12} lg={5}>
+                        <h2 style={{textAlign:'center', fontWeight:'700', paddingBlock:'20px'}}>Sign In</h2>
+                        <Form style={{color:'#9D9D9D'}}>
+                            <Form.Group controlId="formBasicEmail">
+                                <Form.Label>Username / Email</Form.Label>
+                                <Form.Control style={{height:'50px'}} type="text" placeholder="" onChange={handleUsername} />
+                            </Form.Group>
+
+                            <Form.Group controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control style={{height:'50px'}} type="password" placeholder="" onChange={handlePassword} />
+                            </Form.Group>
+                            <Button type="submit" block style={{backgroundColor:'#0086CF', fontSize:'18px', fontWeight:'700'}}>
+                                Login
+                            </Button>
+                        </Form>
+                        <p style={{paddingBlock:'40px'}}>Don't have account? <span style={{color:'blue', cursor:'pointer'}}><a>Sign Up</a></span></p>
                     </Col>
                 </Row>
             </Container>
-        </div>
+        </Container>
     );
 }

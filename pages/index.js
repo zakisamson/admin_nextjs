@@ -5,7 +5,7 @@ import Sign_in from './Sign_in'
 export default function Home() {
   return (
     <div>
-      <Sign_in />
+      main
     </div>
   )
 }
