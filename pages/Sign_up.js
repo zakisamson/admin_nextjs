@@ -47,10 +47,10 @@ export default function Sign_up(){
                                 <Form.Control style={{height:'50px'}} type="password" placeholder="" onChange={handleConfPassword} />
                             </Form.Group>
                             <Button type="submit" block style={{backgroundColor:'#0086CF', fontSize:'18px', fontWeight:'700'}}>
-                                Login
+                                Register
                             </Button>
                         </Form>
-                        <p style={{paddingBlock:'40px'}}>Don't have account? <span style={{color:'blue', cursor:'pointer'}}><a>Sign Up</a></span></p>
+                        <p style={{paddingBlock:'40px'}}>Already have an account? <span style={{color:'blue', cursor:'pointer'}}><a>Sign In</a></span></p>
                     </Col>
                 </Row>
             </Container>

@@ -1,11 +1,21 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Main from './Main'
-import Sign_in from './Sign_in'
+import { Container, Row, Col, Image, Button } from 'react-bootstrap'
+import Sidebar from '../components/organisms/Sidebar'
+import List from '../components/organisms/List'
 
 export default function Home() {
   return (
-    <div>
-      main
-    </div>
-  )
+    <Container fluid>
+      <Container>
+        <Row>
+          <Col lg={4} style={{padding:'10px'}}>
+            <Sidebar />
+          </Col>
+          <Col lg={8}> 
+            <List />
+          </Col>
+        </Row>
+      </Container>
+    </Container>
+  );
 }
