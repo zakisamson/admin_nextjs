@@ -17,10 +17,12 @@ export default function List(){
             <div className="list-table" style={{marginBlock:'10px'}}>
                 <Table responsive>
                     <thead>
-                        <th>Product Name</th>
-                        <th style={{textAlign:'center'}}>Price</th>
-                        <th style={{textAlign:'center'}}>Stock</th>
-                        <th style={{textAlign:'center'}}>Action</th>
+                        <tr>
+                            <th>Product Name</th>
+                            <th style={{textAlign:'center'}}>Price</th>
+                            <th style={{textAlign:'center'}}>Stock</th>
+                            <th style={{textAlign:'center'}}>Action</th>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>

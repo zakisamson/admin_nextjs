@@ -50,7 +50,7 @@ export default function Sign_up(){
                                 Register
                             </Button>
                         </Form>
-                        <p style={{paddingBlock:'40px'}}>Already have an account? <span style={{color:'blue', cursor:'pointer'}}><a>Sign In</a></span></p>
+                        <p style={{paddingBlock:'40px'}}>Already have an account? <span style={{color:'blue', cursor:'pointer'}}><a href="/Sign_in">Sign In</a></span></p>
                     </Col>
                 </Row>
             </Container>

@@ -6,7 +6,7 @@ export default function Sidebar(){
         <div className="sidebar-ctn">
             <p className="font-bold" style={{margin:0, padding:'5px'}}>Admin Panel</p>
             <h2 className="font-bold" style={{margin:0}}>Peduli Digital</h2>
-            <Profile username_profile="zakisamson" profile_photo="/profile2.jpg" />
+            <Profile />
             <SidebarButton imgsource="/dashboard_icon.png" text="Dashboard" />
             <SidebarButton imgsource="/product_icon.png" text="Products" />
             <SidebarButton imgsource="/selling_icon.png" text="Selling" />
