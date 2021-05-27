@@ -1,9 +1,56 @@
 import { useState } from 'react'
 import { Row, Col, Form, Button, Image } from 'react-bootstrap'
 import CancelButton from '../atoms/CancelButton'
+import { useRouter } from 'next/router';
+import { fetch_data } from '../variables/api'
 
 export default function AddProductForm(){
-    const [inputs, setInputs] = useState({prod_name:'', price:'', stock:'', category:'', description:''});
+    const [prod_name, setProdName] = useState('');
+    const [price, setPrice] = useState('');
+    const [stock, setStock] = useState('');
+    const [category, setCat] = useState('');
+    const [description, setDesc] = useState('');
+    const router = useRouter();
+
+    const handleProductName = e => {
+        setProdName(e.target.value);
+    }
+
+    const handleProductPrice = e => {
+        setPrice(e.target.value);
+    }
+
+    const handleProductStock = e => {
+        setStock(e.target.value);
+    }
+
+    const handleProductCat = e => {
+        setCat(e.target.value);
+    }
+
+    const handleProductDesc = e => {
+        setDesc(e.target.value);
+    }
+
+    const handleAddProduct = () => {
+        let json = {
+            "action" : "save",
+            "table" : "tx_hdr_product",
+            "data" : [
+                {
+                    "name_hdr_product":prod_name,
+                    "price_hdr_product":price,
+                    "qty_hdr_product":stock,
+                    "category_hdr_product":category,
+                    "desc_hdr_product":description
+                }
+            ]
+        }
+        fetch_data("POST", "http://localhost/samson/data", json).then(function (result) {
+            console.log(result);
+            router.push("/");
+        });
+    };
 
     return(
         <div style={{marginTop:'40px'}}>
@@ -11,7 +58,7 @@ export default function AddProductForm(){
             <div className="product-ctn" style={{borderRadius:'25px', border:'0.5px solid lightgray'}}>
                 <div className="header" style={{borderBottom:'0.5px solid lightgray', width:'inherit', padding:'10px', display:'flex', alignItems:'center'}}>
                     <h2 style={{padding:'10px', flex:'0.99'}}>Add New Product</h2>
-                    <CancelButton link="/" />
+                    <CancelButton onClick={ () => router.push("/")} />
                 </div>
                 <div className="body" >
                     <Row>
@@ -22,31 +69,31 @@ export default function AddProductForm(){
                             <Form>
                                 <Form.Group controlId="formProdName">
                                     <Form.Label>Product Name</Form.Label>
-                                    <Form.Control type="text" placeholder="" onChange={e => setInputs({...inputs, prod_name: e.target.value})} value={inputs.prod_name}/>
+                                    <Form.Control type="text" placeholder="" onChange={handleProductName} />
                                 </Form.Group>
                                 <Row>
                                     <Col>
                                     <Form.Group controlId="formPrice">
                                         <Form.Label>Price</Form.Label>
-                                        <Form.Control type="text" placeholder="" onChange={e => setInputs({...inputs, price: e.target.value})} value={inputs.price} />
+                                        <Form.Control type="text" placeholder="" onChange={handleProductPrice} />
                                     </Form.Group>
                                     </Col>
                                     <Col>
                                     <Form.Group controlId="formStock">
                                         <Form.Label>Stock</Form.Label>
-                                        <Form.Control type="text" placeholder="" onChange={e => setInputs({...inputs, stock: e.target.value})} value={inputs.stock} />
+                                        <Form.Control type="text" placeholder="" onChange={handleProductStock} />
                                     </Form.Group>
                                     </Col>
                                 </Row>
                                 <Form.Group controlId="formCategory">
                                     <Form.Label>Category</Form.Label>
-                                    <Form.Control type="text" placeholder="" onChange={e => setInputs({...inputs, category: e.target.value})} value={inputs.category} />
+                                    <Form.Control type="text" placeholder="" onChange={handleProductCat} />
                                 </Form.Group>
                                 <Form.Group controlId="formDescription">
                                     <Form.Label>Description</Form.Label>
-                                    <Form.Control type="text" as="textarea" rows={3} onChange={e => setInputs({...inputs, description: e.target.value})} value={inputs.description} />
+                                    <Form.Control type="text" as="textarea" rows={3} onChange={handleProductDesc} />
                                 </Form.Group>
-                                <Button block type="submit">
+                                <Button block onClick={handleAddProduct}>
                                     Save
                                 </Button>
                             </Form>

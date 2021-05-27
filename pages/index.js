@@ -8,7 +8,7 @@ export default function Home() {
     <Container fluid>
       <Container>
         <Row>
-          <Col lg={4} style={{padding:'10px'}}>
+          <Col lg={4} style={{padding:'10px', maxHeight:'900px'}}>
             <Sidebar />
           </Col>
           <Col lg={8}> 

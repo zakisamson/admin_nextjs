@@ -3,7 +3,7 @@ import { Image } from 'react-bootstrap'
 export default function CancelButton({link, ...buttonProps}){
     return(
         <button style={{backgroundColor:'transparent', border:'none', height:'30px'}} {...buttonProps}>
-            <a href={link}>
+            <a>
                 <Image src="/cancel.png" style={{height:'30px', width:'auto'}}/>
             </a>
         </button>

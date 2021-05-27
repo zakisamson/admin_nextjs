@@ -1,24 +1,49 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col, Image, Form, Button } from 'react-bootstrap'
 import { useState } from 'react'
+import { fetch_data } from '../components/variables/api'
+import { useRouter } from 'next/router';
 
 export default function Sign_up(){
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confPassword, setConfPassword] = useState('');
     const [brdrColor, setBrdrColor] = useState('');
+    const router = useRouter();
 
-    const handleUsername = e =>{
+    const handleUsername = e => {
         setUsername(e.target.value);
     }
 
-    const handlePassword = e =>{
+    const handlePassword = e => {
         setPassword(e.target.value);
     }
 
-    const handleConfPassword = e =>{
+    const handleConfPassword = e => {
         setConfPassword(e.target.value);
     }
+
+    const handleRegister = () => {
+        if(password == confPassword){
+            let json = {
+                "action" : "save",
+                "table" : "tx_hdr_user",
+                "data" : [
+                    {
+                        "user_name":username,
+                        "user_password":password
+                    }
+                ]
+              }
+            fetch_data("POST", "http://localhost/samson/data", json).then(function (result) {
+                console.log(result);
+                router.push("/Sign_in");
+              });
+        } else{
+            alert("Passwords doesn't match")
+            setBrdrColor('red');
+        }
+    };
 
     return (
         <Container fluid style={{marginTop:'60px'}}>
@@ -44,9 +69,9 @@ export default function Sign_up(){
 
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Confirm Password</Form.Label>
-                                <Form.Control style={{height:'50px'}} type="password" placeholder="" onChange={handleConfPassword} />
+                                <Form.Control style={{height:'50px', borderColor:`${brdrColor}`}}} type="password" placeholder="" onChange={handleConfPassword} />
                             </Form.Group>
-                            <Button type="submit" block style={{backgroundColor:'#0086CF', fontSize:'18px', fontWeight:'700'}}>
+                            <Button block style={{backgroundColor:'#0086CF', fontSize:'18px', fontWeight:'700'}} onClick={handleRegister}>
                                 Register
                             </Button>
                         </Form>

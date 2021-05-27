@@ -28,7 +28,7 @@ export default function Sign_in(){
             if (result.success) {
                 alert(result.message);
                 router.push("/");
-                localStorage.setItem("user_id", JSON.stringify(result.data));
+                localStorage.setItem("userdata", JSON.stringify(result.data));
             } else {
                 alert(result.message);
             }

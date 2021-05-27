@@ -6,7 +6,7 @@ import AddProductForm from '../components/organisms/AddProductForm'
 export default function Add_product(){
     return (
         <Container fluid>
-            <Container>
+            <Container style={{maxHeight:'900px'}}>
                 <Row>
                 <Col lg={4} style={{padding:'10px'}}>
                     <Sidebar />
