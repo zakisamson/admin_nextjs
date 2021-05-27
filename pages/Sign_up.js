@@ -69,7 +69,7 @@ export default function Sign_up(){
 
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Confirm Password</Form.Label>
-                                <Form.Control style={{height:'50px', borderColor:`${brdrColor}`}}} type="password" placeholder="" onChange={handleConfPassword} />
+                                <Form.Control style={{height:'50px', borderColor:`${brdrColor}`}} type="password" placeholder="" onChange={handleConfPassword} />
                             </Form.Group>
                             <Button block style={{backgroundColor:'#0086CF', fontSize:'18px', fontWeight:'700'}} onClick={handleRegister}>
                                 Register
